@@ -6,6 +6,7 @@ import { deleteObject, getStorage, ref, uploadBytesResumable } from 'firebase/st
 
 import { app } from '../../firebase';
 import { clearFiles, removeFile, setFilesData } from '../../redux/reducers/file';
+import { calculateDuration, generateFileData } from '../../helper';
 
 const UploadFiles = () => {
 
@@ -47,21 +48,7 @@ const UploadFiles = () => {
         }
         setFiles([...files, ...newUpdatedFiles])
     }
-    const generateFileData = (file, timeStamp, value) => {
-        const format = file.name.split('.').pop()
-        const fileData = {
-            wordCount: 0,
-            value,
-            name: file.name,
-            size: fileSize[file.name],
-            format,
-            sourceLanguage: "English",
-            targetLanguage: [],
-            contentType: "translation",
-            filePath: `${user.companyName.split(' ').join('_')}/${user.id}/${timeStamp}/${file.name}`
-        }
-        return fileData
-    }
+
 
     const handleDragOver = (e) => {
         e.preventDefault();
@@ -78,18 +65,7 @@ const UploadFiles = () => {
         setFileRemoved(false)
         fileRef.current.click();
     };
-    const calculateDuration = (file, type) => {
-        return new Promise((resolve) => {
-            const mediaElement = document.createElement(type);
-            mediaElement.src = URL.createObjectURL(file);
 
-            mediaElement.onloadedmetadata = () => {
-                const duration = mediaElement.duration;
-                URL.revokeObjectURL(mediaElement.src);
-                resolve(duration);
-            };
-        });
-    }
     const handleError = useCallback((file) => {
         setFileRemoved(false)
         setInProgress(false)
@@ -102,18 +78,18 @@ const UploadFiles = () => {
         setCanceledUpload((prev) => ({ ...prev, [file.name]: true }))
         currFileIndexRef.current = currFileIndexRef.current + 1;
         setCurrentFileIndex(currFileIndexRef.current);
-        console.log(currFileIndexRef.current)
     }, [])
 
     const handleUpload = useCallback(async (file) => {
         const storage = getStorage(app);
         const fileName = file?.name;
         const timeStamp = Date.now();
-        const storageRef = ref(storage, `${user.companyName.split(' ').join('_')}/${user.id}/${timeStamp}/${fileName}`);
+        const date = new Date(timeStamp)
+        const storageRef = ref(storage, `${user.companyName.split(' ').join('_')}/${user.id}/${date}/${fileName}`);
         const form = new FormData();
         const isRequired = file.type.startsWith('video') || file.type.startsWith('audio') || file.type.startsWith('image')
 
-        if (isRequired) {
+        if (!isRequired) {
             form.append('file', file);
             form.append('name', fileName);
             form.append('timeStamp', timeStamp);
@@ -121,11 +97,12 @@ const UploadFiles = () => {
         let fileData = {}
         if (file.type.startsWith('video')) {
             const value = await calculateDuration(file, 'video');
-            fileData = generateFileData(file, timeStamp, value)
+            console.log(value)
+            fileData = generateFileData(file, timeStamp, value, user, fileSize)
         }
         else if (file.type.startsWith('audio')) {
             const value = await calculateDuration(file, 'audio')
-            fileData = generateFileData(file, timeStamp, value)
+            fileData = generateFileData(file, timeStamp, value, user, fileSize)
         }
         const uploadTask = uploadBytesResumable(storageRef, file);
         setInProgress(true);
@@ -146,7 +123,6 @@ const UploadFiles = () => {
                 handleError(file)
             },
             async () => {
-
                 try {
                     let data = {}
                     if (!isRequired) {
@@ -227,9 +203,7 @@ const UploadFiles = () => {
         if (!inProgress && !fileRemoved && files.length > 0 && currentFileIndex < files.length) {
             handleUpload(files[currentFileIndex]);
         }
-        return () => {
-            console.log(uploadedFilesData)
-        }
+
     }, [files, currentFileIndex, fileRemoved, inProgress, handleUpload]);
 
     const dispatch = useDispatch()

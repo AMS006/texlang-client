@@ -1,6 +1,6 @@
 import axios from "axios"
 import { projectRequest, setCompanyProjects, setError, setInvoices, setLatestProjects, setProject } from "../../reducers/project"
-import { setHeaders } from "../../../helper/header"
+import { setHeaders } from "../../../helper"
 import { clearUser } from "../../reducers/user"
 
 export const getCompanyProjects = () => async(dispatch) =>{

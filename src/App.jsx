@@ -30,7 +30,6 @@ function App() {
   const [mounted, setMounted] = useState(false);
   const dispatch = useDispatch()
   useEffect(() => {
-    console.log(import.meta.env)
     if (localStorage.getItem('texlang-auth-token'))
       dispatch(getUser())
   }, [dispatch])

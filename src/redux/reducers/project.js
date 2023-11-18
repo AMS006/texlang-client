@@ -56,6 +56,14 @@ const projectSlice = createSlice({
 
 })
 
-export const {projectRequest,setAllProjects,setProject,setCompanyProjects,setInvoices,setLatestProjects,setError} = projectSlice.actions
+export const {
+    projectRequest,
+    setAllProjects,
+    setProject,
+    setCompanyProjects,
+    setInvoices,
+    setLatestProjects,
+    setError
+} = projectSlice.actions
 
 export default projectSlice.reducer

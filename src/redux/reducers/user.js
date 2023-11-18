@@ -77,6 +77,21 @@ const userSlice = createSlice({
     }
 })
 
-export const {userRequest,getAllUserRequest,setUser,setProjectTabOpen,updateUser,clearUser,setUserError,setForgotPasswordEmail,setAllUsers,setUserData ,setCodeSend, setForgotPassword, setChangePassword,clearAllUsers} = userSlice.actions
+export const {
+    userRequest,
+    getAllUserRequest,
+    setForgotPasswordEmail,
+    setForgotPassword,
+    setChangePassword,
+    setCodeSend,
+    setUserData,
+    setProjectTabOpen,
+    setUser,
+    setAllUsers,
+    updateUser,
+    clearAllUsers,
+    clearUser,
+    setUserError,
+} = userSlice.actions
 
 export default userSlice.reducer

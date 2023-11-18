@@ -1,6 +1,6 @@
 import axios from "axios"
 import { setPieCharData, setWorkError, setWorks, workRequest } from "../../reducers/work"
-import { setHeaders } from "../../../helper/header"
+import { setHeaders } from "../../../helper"
 import { clearUser } from "../../reducers/user"
 
 export const getProjectWork = (projectId) => async (dispatch) => {

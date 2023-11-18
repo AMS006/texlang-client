@@ -38,6 +38,11 @@ const workSlice = createSlice({
     }
 })
 
-export const { workRequest, setWorks,setPieCharData, setWorkError } = workSlice.actions
+export const { 
+    workRequest, 
+    setWorks,
+    setPieCharData, 
+    setWorkError 
+} = workSlice.actions
 
 export default workSlice.reducer

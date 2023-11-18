@@ -46,5 +46,11 @@ const flieSlice = createSlice({
     }
 })
 
-export const {setFilesData,setClearFile,updateFile,removeFile,clearFiles} = flieSlice.actions
+export const {
+    setFilesData,
+    setClearFile,
+    updateFile,
+    removeFile,
+    clearFiles
+} = flieSlice.actions
 export default flieSlice.reducer

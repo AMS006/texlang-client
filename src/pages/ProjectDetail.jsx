@@ -19,7 +19,7 @@ const ProjectDetail = () => {
             dispatch(getProjectDetailsUser(id))
         }
     }, [id, dispatch])
-    const { selectedProject, loading } = useSelector((state) => state.project)
+    const { selectedProject, loading, error } = useSelector((state) => state.project)
     const { works } = useSelector((state) => state.work)
 
     if (!selectedProject && loading)

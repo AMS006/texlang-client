@@ -1,7 +1,7 @@
 import axios from "axios"
 import { projectRequest, setAllProjects, setError, setProject } from "../reducers/project"
 import { setWorks } from "../reducers/work"
-import { setHeaders } from "../../helper/header"
+import { setHeaders } from "../../helper"
 import { clearUser } from "../reducers/user"
 
 export const getProjects = () => async(dispatch) =>{

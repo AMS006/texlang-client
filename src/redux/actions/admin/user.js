@@ -1,6 +1,6 @@
 import axios from "axios"
 import { clearAllUsers, clearUser, getAllUserRequest, setAllUsers } from "../../reducers/user"
-import { setHeaders } from "../../../helper/header"
+import { setHeaders } from "../../../helper"
 
 export const getAllUsers = () => async (dispatch) => {
     try {
