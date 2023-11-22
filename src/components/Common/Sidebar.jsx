@@ -3,8 +3,7 @@ import { useSelector } from 'react-redux'
 import UserNavbar from './UserNavbar'
 import logo from '../../assets/logo_main.png'
 import AdminNavbar from '../admin/AdminNavbar'
-
-
+import { Roles } from '../../data/constants'
 
 const Sidebar = () => {
     const { user } = useSelector((state) => state.user)
@@ -18,7 +17,7 @@ const Sidebar = () => {
 
             </div>
             <div className='py-4'>
-                {user && user.role === 'admin' ? <AdminNavbar /> : <UserNavbar />}
+                {user && user.role === Roles.ADMIN ? <AdminNavbar /> : <UserNavbar />}
             </div>
         </div>
     )

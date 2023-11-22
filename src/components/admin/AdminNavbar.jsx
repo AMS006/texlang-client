@@ -59,10 +59,10 @@ const AdminNavbar = () => {
                     <TbFileInvoice size={20} />
                     <span>Show Invoices</span>
                 </NavLink>
-                <NavLink to={'/Admin/GenerateReports'} className='flex items-center gap-2.5 px-2 hover:bg-[#67707975] py-1.5'>
+                {/* <NavLink to={'/Admin/GenerateReports'} className='flex items-center gap-2.5 px-2 hover:bg-[#67707975] py-1.5'>
                     <TbReport size={20} />
                     <span>Generate Reports</span>
-                </NavLink>
+                </NavLink> */}
             </div>
         </nav>
     )

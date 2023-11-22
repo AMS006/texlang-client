@@ -9,6 +9,7 @@ import StartDateFilter from "../components/Common/Filters/StartDateFilter";
 import UserDeactivateButton from "../components/admin/UserDeactivateButton";
 import SelectSourceLanguage from "../components/Select/SelectSourceLanguage";
 import SelectTargetLanguage from "../components/Select/SelectTargetLanguage";
+import { Rates } from "./constants";
 
 export const displayTableColumns = [
     {
@@ -30,7 +31,7 @@ export const displayTableColumns = [
         Header: 'Source Language',
         accessor: 'sourceLanguage',
         Cell: (info) => (
-           <SelectSourceLanguage name={info.row.original.name} />
+            <SelectSourceLanguage name={info.row.original.name} />
         ),
     },
     {
@@ -58,7 +59,7 @@ export const projectListTableColumns = [
     {
         Header: 'Project Title',
         accessor: 'name',
-        Cell:(info) => <Link className="text-blue-500 hover:underline" to={`/Enterprise/EnterpriseFileDownLoad/${info.data[info.row.index].id}`}>{info.value}</Link>
+        Cell: (info) => <Link className="text-blue-500 hover:underline" to={`/Enterprise/EnterpriseFileDownLoad/${info.data[info.row.index].id}`}>{info.value}</Link>
     },
     {
         Header: 'User Id',
@@ -72,12 +73,12 @@ export const projectListTableColumns = [
     {
         Header: 'End Data',
         accessor: 'end_date',
-        Cell: info => <span className={`text-sm py-1 px-1.5 ${info.data[info.row.index]?.status==='Completed'?'bg-blue-500':'bg-yellow-500'} text-white`}>{dayjs(info.value).format("DD/MM/YYYY")}</span>
+        Cell: info => <span className={`text-sm py-1 px-1.5 ${info.data[info.row.index]?.status === 'Completed' ? 'bg-blue-500' : 'bg-yellow-500'} text-white`}>{dayjs(info.value).format("DD/MM/YYYY")}</span>
     },
     {
-        Header:'Status',
-        accessor:'status',
-        Cell: info => <span className={`${info.value==='Completed'?'bg-blue-500':'bg-red-500'} py-1 px-1.5 text-sm text-white `}>{info.value}</span>
+        Header: 'Status',
+        accessor: 'status',
+        Cell: info => <span className={`${info.value === 'Completed' ? 'bg-blue-500' : 'bg-red-500'} py-1 px-1.5 text-sm text-white `}>{info.value}</span>
     }
 ];
 export const companyProjectListTableColumns = [
@@ -104,12 +105,12 @@ export const companyProjectListTableColumns = [
     {
         Header: 'End Data',
         accessor: 'end_date',
-        Cell: info => <span className={`text-sm py-1 px-1.5 ${info.data[info.row.index]?.status==='Completed'?'bg-blue-500':'bg-yellow-500'} text-white`}>{dayjs(info.value).format("DD/MM/YYYY")}</span>
+        Cell: info => <span className={`text-sm py-1 px-1.5 ${info.data[info.row.index]?.status === 'Completed' ? 'bg-blue-500' : 'bg-yellow-500'} text-white`}>{dayjs(info.value).format("DD/MM/YYYY")}</span>
     },
     {
-        Header:'Status',
-        accessor:'status',
-        Cell: info => <span className={`${info.value==='Completed'?'bg-blue-500':'bg-red-500'} py-1 px-1.5 text-sm text-white `}>{info.value}</span>
+        Header: 'Status',
+        accessor: 'status',
+        Cell: info => <span className={`${info.value === 'Completed' ? 'bg-blue-500' : 'bg-red-500'} py-1 px-1.5 text-sm text-white `}>{info.value}</span>
     }
 ]
 export const latestProjectColumn = [
@@ -120,7 +121,7 @@ export const latestProjectColumn = [
     {
         Header: 'Project Title',
         accessor: 'name',
-        Cell:(info) => <Link className="text-blue-500 hover:underline" to={`/Admin/ProjectDetails/${info.data[info.row.index].id}`}>{info.value}</Link>
+        Cell: (info) => <Link className="text-blue-500 hover:underline" to={`/Admin/ProjectDetails/${info.data[info.row.index].id}`}>{info.value}</Link>
     },
     {
         Header: 'Start Date',
@@ -130,12 +131,12 @@ export const latestProjectColumn = [
     {
         Header: 'End Data',
         accessor: 'end_date',
-        Cell: info => <span className={`text-sm py-1 px-1.5 ${info.data[info.row.index]?.status==='Completed'?'bg-blue-500':'bg-yellow-500'} text-white`}>{dayjs(info.value).format("DD/MM/YYYY")}</span>
+        Cell: info => <span className={`text-sm py-1 px-1.5 ${info.data[info.row.index]?.status === 'Completed' ? 'bg-blue-500' : 'bg-yellow-500'} text-white`}>{dayjs(info.value).format("DD/MM/YYYY")}</span>
     },
     {
-        Header:'Status',
-        accessor:'status',
-        Cell: info => <span className={`${info.value==='Completed'?'bg-blue-500':'bg-red-500'} py-1 px-1.5 text-sm text-white `}>{info.value}</span>
+        Header: 'Status',
+        accessor: 'status',
+        Cell: info => <span className={`${info.value === 'Completed' ? 'bg-blue-500' : 'bg-red-500'} py-1 px-1.5 text-sm text-white `}>{info.value}</span>
     }
 ]
 
@@ -146,14 +147,14 @@ export const manageUserTable = [
     },
     {
         Header: 'User name',
-        Cell:(info) =>(
+        Cell: (info) => (
             <span>{info.row.original?.firstName + " " + info.row.original?.lastName}</span>
         )
     },
     {
         Header: 'Status',
         accessor: 'status',
-        Cell: (info) => <span className="text-sm">{info.value?'Active':"Deactivated"}</span>
+        Cell: (info) => <span className="text-sm">{info.value ? 'Active' : "Deactivated"}</span>
     },
     {
         Header: 'Action',
@@ -175,7 +176,7 @@ export const userUsageTable = [
     },
     {
         Header: 'User name',
-        Cell:(info) =>(
+        Cell: (info) => (
             <span>{info.row.original?.firstName + " " + info.row.original?.lastName}</span>
         )
     },
@@ -189,7 +190,7 @@ export const userUsageTable = [
         accessor: 'billedAmount',
         Cell: (info) => <span >{Number(info.value).toFixed(2)}</span>
     },
-   
+
 ]
 export const workTableColumn = [
     {
@@ -209,47 +210,47 @@ export const workTableColumn = [
     {
         Header: 'Target Language',
         accessor: 'targetLanguage',
-        Cell: info => 
+        Cell: info =>
             <span className='capitalize'>
-                {info.value?.map((val,idx) => val.lang + (idx+1<info.value.length?', ':''))}
+                {info.value?.map((val, idx) => val.lang + (idx + 1 < info.value.length ? ', ' : ''))}
             </span>
     },
     {
-        Header:'Job Type',
-        accessor:'contentType',
+        Header: 'Job Type',
+        accessor: 'contentType',
         Cell: info => <span className='capitalize'>{info.value}</span>
     },
     {
-        Header:"Unit",
-         Cell:(info)=><span>{info.data[info.row.index].wordCount > 0?'Word/Page Count':"Time"}</span>
+        Header: "Unit",
+        Cell: (info) => <span>{info.data[info.row.index].wordCount > 0 ? 'Word/Page Count' : "Time"}</span>
     },
     {
-        Header:"Value",
-        accessor:'value',
-        Cell:(info)=><span>{info.value > 0 ? info.value + 's':''}</span>
+        Header: "Value",
+        accessor: 'value',
+        Cell: (info) => <span>{info.value > 0 ? info.value + 's' : ''}</span>
     },
     {
-        Header:"Word Count",
-        accessor:'wordCount',
-        Cell:(info) =><span>{info.value > 0 ? info.value:''}</span>
+        Header: "Word Count",
+        accessor: 'wordCount',
+        Cell: (info) => <span>{info.value > 0 ? info.value : ''}</span>
     }
 ]
 
 export const projectDownloadTable = [
     {
-        Header:"Target Language",
-       
-        Cell:(info)=> <span className='capitalize'>{info.data[info.row.index].lang}</span>
+        Header: "Target Language",
+
+        Cell: (info) => <span className='capitalize'>{info.data[info.row.index].lang}</span>
     },
     {
-        Header:"Download Status",
-        accessor:"downloadUrl",
-        Cell:(info) => <a href={info.value} className="text-blue-500 hover:underline " download>{info.value && 'Download'}</a>
+        Header: "Download Status",
+        accessor: "downloadUrl",
+        Cell: (info) => <a href={info.value} className="text-blue-500 hover:underline " download>{info.value && 'Download'}</a>
     }
 ]
 
 export const invoiceTableColumn = [
-     {
+    {
         Header: 'Sr. No.',
         accessor: (row, idx) => idx + 1
     },
@@ -259,26 +260,31 @@ export const invoiceTableColumn = [
         Cell: (info) => <span>{info.value}</span>
     },
     {
-        Header:"Date of Creation",
-       accessor:'createdAt',
-        Cell:(info)=> <span className='capitalize'>{dayjs(info.value).format('M/DD/YYYY')}</span>
+        Header: "Date of Creation",
+        accessor: 'createdAt',
+        Cell: (info) => <span className='capitalize'>{dayjs(info.value).format('M/DD/YYYY')}</span>
     },
     {
-        Header:"Project Name",
-        accessor:"name"
+        Header: "Project Name",
+        accessor: "name"
     },
     {
-        Header:"Created By",
-        accessor:'createdBy'
+        Header: "Created By",
+        accessor: 'createdBy'
     },
     {
-        Header:"Invoices",
-        Cell:(info) => <Link to={`/Admin/Invoice/Generate/${info.data[info?.row?.index].id}`} className='text-blue-500 hover:underline'>Generate</Link>
+        Header: "Invoices",
+        Cell: (info) => {
+            return (info.row.original.invoiceGenerated ?
+                <Link to={`/Admin/Invoice/Details/${info.data[info?.row?.index].invoiceId}`} className='text-blue-500 hover:underline'>{info.row.original?.invoiceNumber}</Link> :
+                <Link to={`/Admin/Invoice/Generate/${info.data[info?.row?.index].id}`} className='text-blue-500 hover:underline'>Generate</Link>
+            )
+        }
     }
 ]
 
 export const invoiceFileTableColumn = [
-     {
+    {
         Header: 'Sr. No.',
         accessor: (row, idx) => idx + 1
     },
@@ -288,31 +294,40 @@ export const invoiceFileTableColumn = [
         Cell: (info) => <span>{info.value}</span>
     },
     {
-        Header:"Service Type",
-       accessor:'contentType',
-        Cell:(info)=> <span className='capitalize'>{info.value}</span>
+        Header: "Service Type",
+        accessor: 'contentType',
+        Cell: (info) => <span className='capitalize'>{info.value}</span>
     },
     {
-        Header:"Amount",
-        accessor:"amount"
+        Header: "Amount",
+        accessor: "amount"
     }
 ]
 
 export const taxDetailTableColumn = [
-     {
+    {
         Header: 'Total Amount',
-       
+        accessor: 'totalAmount',
+        Cell: (info) => <span>{Number(info.value).toFixed(2)}</span>
+
     },
     {
         Header: 'CGST',
-       
+        accessor: 'cgst',
+        Cell: (info) => <span>{Number(info.value).toFixed(2)}%</span>
+
     },
     {
-        Header:"SGST",
-      
+        Header: "SGST",
+        accessor: 'sgst',
+        Cell: (info) => <span>{Number(info.value).toFixed(2)}%</span>
+
+
     },
     {
-        Header:"Total After Tax",
+        Header: "Total After Tax",
+        accessor: 'totalAmountAfterTax',
+        Cell: (info) => <span>{Number(info.value).toFixed(2)}</span>
     }
 ]
 
@@ -321,7 +336,7 @@ export const generateReportsTableColumn = [
         Header: 'Sr. No.',
         accessor: (row, idx) => idx + 1,
         Filter: StartDateFilter,
-        disableFilters:true
+        disableFilters: true
     },
     {
         Header: 'Project Title',
@@ -331,33 +346,33 @@ export const generateReportsTableColumn = [
 
         },
         Filter: StartDateFilter,
-        disableFilters:true
+        disableFilters: true
     },
     {
         Header: 'Customer',
         accessor: 'customer',
-         Filter: StartDateFilter,
-        disableFilters:true
-       
+        Filter: StartDateFilter,
+        disableFilters: true
+
     },
     {
         Header: 'Start Date',
         accessor: 'start_date',
         Cell: (info) => <span className="text-sm">{dayjs(info.value).format("DD/MM/YYYY")}</span>,
         Filter: StartDateFilter,
-       
+
     },
     {
         Header: 'End Data',
         accessor: 'end_date',
-        Cell: info => <span className={`text-sm py-1 px-1.5 ${info.data[info.row.index]?.status==='Completed'?'bg-blue-500':'bg-yellow-500'} text-white`}>{dayjs(info.value).format("DD/MM/YYYY")}</span>,
+        Cell: info => <span className={`text-sm py-1 px-1.5 ${info.data[info.row.index]?.status === 'Completed' ? 'bg-blue-500' : 'bg-yellow-500'} text-white`}>{dayjs(info.value).format("DD/MM/YYYY")}</span>,
         Filter: EndDateFilter,
-       
+
     },
     {
-        Header:'Status',
-        accessor:'status',
-        Cell: info => <span className={`${info.value==='Completed'?'bg-blue-500':'bg-red-500'} py-1 px-1.5 text-sm text-white `}>{info.value}</span>,
-         Filter: StatusFilter,
+        Header: 'Status',
+        accessor: 'status',
+        Cell: info => <span className={`${info.value === 'Completed' ? 'bg-blue-500' : 'bg-red-500'} py-1 px-1.5 text-sm text-white `}>{info.value}</span>,
+        Filter: StatusFilter,
     }
 ]

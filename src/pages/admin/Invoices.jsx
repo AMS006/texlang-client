@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 
 import Layout from '../../layout'
 import { useDispatch } from 'react-redux'
-import { getInvoices } from '../../redux/actions/admin/project';
 import InvoicesTable from '../../components/admin/Table/InvoicesTable';
+import { getInvoices } from '../../redux/actions/admin/invoice';
 
 const Invoices = () => {
   const dispatch = useDispatch();

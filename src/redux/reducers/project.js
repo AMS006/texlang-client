@@ -6,7 +6,6 @@ const initialState = {
     error:false,
     latestProjects:[],
     companyProjects: [],
-    invoices:[],
     selectedProject:undefined,
 }
 
@@ -39,10 +38,6 @@ const projectSlice = createSlice({
             state.selectedProject = action.payload
             state.loading = false
         },
-        setInvoices:(state,action) =>{
-            state.invoices = action.payload
-            state.loading = false
-        },
         setError:(state) =>{
             state.error=true
             state.loading = false
@@ -61,7 +56,6 @@ export const {
     setAllProjects,
     setProject,
     setCompanyProjects,
-    setInvoices,
     setLatestProjects,
     setError
 } = projectSlice.actions

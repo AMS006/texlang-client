@@ -6,7 +6,7 @@ import TableLoader from '../../Loader/Table';
 
 
 const InvoicesTable = () => {
-    const { invoices, loading } = useSelector((state) => state.project)
+    const { invoices, loading } = useSelector((state) => state.invoice)
     const data = useMemo(() => invoices, [invoices])
     const {
         getTableProps,

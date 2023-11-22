@@ -5,8 +5,8 @@ import { invoiceFileTableColumn } from '../../../data/tableColumns';
 import TableLoader from '../../Loader/Table';
 
 const InvoiceFileTable = () => {
-    const { works, loading } = useSelector((state) => state.work)
-    const data = useMemo(() => works, [works])
+    const { selectedInvoiceWorks, loading } = useSelector((state) => state.invoice)
+    const data = useMemo(() => selectedInvoiceWorks, [selectedInvoiceWorks])
     const {
         getTableProps,
         getTableBodyProps,

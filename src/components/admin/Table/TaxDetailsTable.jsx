@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useTable } from 'react-table';
 import { useSelector } from 'react-redux';
 import { taxDetailTableColumn } from '../../../data/tableColumns';
 import TableLoader from '../../Loader/Table';
 
 const TaxDetailTable = () => {
-    const { loading } = useSelector((state) => state.work)
+    const { loading, selectedInvoiceTaxDetails } = useSelector((state) => state.invoice);
+    const data = useMemo(() => selectedInvoiceTaxDetails, [selectedInvoiceTaxDetails])
     const {
         getTableProps,
         getTableBodyProps,
@@ -15,7 +16,7 @@ const TaxDetailTable = () => {
     } = useTable(
         {
             columns: taxDetailTableColumn,
-            data: [],
+            data,
         },
     );
     return (

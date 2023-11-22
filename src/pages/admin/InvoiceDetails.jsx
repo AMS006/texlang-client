@@ -1,24 +1,22 @@
-import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-
+import React, { useEffect } from 'react'
 import Layout from '../../layout'
+import { getProjectInvoiceDetails } from '../../redux/actions/admin/invoice';
 import megdapLogo from '../../assets/megdapLogo.svg'
-import TaxDetailTable from '../../components/admin/Table/TaxDetailsTable'
-import InvoiceFileTable from '../../components/admin/Table/InvoiceFileTable'
-import { generateProjectInvoice } from '../../redux/actions/admin/invoice'
-import FullScreenLoader from '../../components/Loader/FullScreen'
-import { companyBankDetails, companyDetails } from '../../data/constants'
+import { useDispatch, useSelector } from 'react-redux';
+import { companyBankDetails, companyDetails } from '../../data/constants';
+import { useParams } from 'react-router-dom';
+import InvoiceFileTable from '../../components/admin/Table/InvoiceFileTable';
+import TaxDetailTable from '../../components/admin/Table/TaxDetailsTable';
+import FullScreenLoader from '../../components/Loader/FullScreen';
 
-const InvoiceGenerate = () => {
-  const { selectedInvoice, loading } = useSelector((state) => state.invoice)
-  const { id } = useParams()
+const InvoiceDetails = () => {
+  const { id } = useParams();
   const dispatch = useDispatch()
-
+  const { loading, selectedInvoice } = useSelector((state) => state.invoice)
   useEffect(() => {
     if (id)
-      dispatch(generateProjectInvoice(id))
-  }, [dispatch, id])
+      dispatch(getProjectInvoiceDetails(id))
+  }, [id, dispatch])
 
   if (loading)
     return <FullScreenLoader />
@@ -117,4 +115,4 @@ const InvoiceGenerate = () => {
   )
 }
 
-export default Layout(InvoiceGenerate)
+export default Layout(InvoiceDetails)
