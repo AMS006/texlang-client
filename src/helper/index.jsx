@@ -22,13 +22,13 @@ export const generateFileData = (file, timeStamp, value, user, fileSize) => {
     const fileData = {
         wordCount: 0,
         value,
-        name: file.name,
-        size: fileSize[file.name],
-        format,
         sourceLanguage: "English",
         targetLanguage: [],
         contentType: "translation",
-        filePath: `${user.companyName.split(' ').join('_')}/${user.id}/${date}/${file.name}`
+        format,
+        size: fileSize[file.name],
+        name: file.name,
+        sourceFilePath: `${user.companyName.split(' ').join('_')}/${user.id}/${date}/${file.name}`
     }
     return fileData
 }

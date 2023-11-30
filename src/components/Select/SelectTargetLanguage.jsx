@@ -1,5 +1,5 @@
 import Select from 'react-select';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { updateFile } from '../../redux/reducers/file';

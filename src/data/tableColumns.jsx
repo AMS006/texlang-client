@@ -9,7 +9,6 @@ import StartDateFilter from "../components/Common/Filters/StartDateFilter";
 import UserDeactivateButton from "../components/admin/UserDeactivateButton";
 import SelectSourceLanguage from "../components/Select/SelectSourceLanguage";
 import SelectTargetLanguage from "../components/Select/SelectTargetLanguage";
-import { Rates } from "./constants";
 
 export const displayTableColumns = [
     {
@@ -245,7 +244,7 @@ export const projectDownloadTable = [
     {
         Header: "Download Status",
         accessor: "downloadUrl",
-        Cell: (info) => <a href={info.value} className="text-blue-500 hover:underline " download>{info.value && 'Download'}</a>
+        Cell: (info) => <a href={info.value} className="text-blue-500 hover:underline" download target={"_blank"}>{info.value && 'Download'}</a>
     }
 ]
 

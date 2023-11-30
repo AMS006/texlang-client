@@ -16,13 +16,13 @@ const Topbar = () => {
     const [drawerOpen, setDrawerOpen] = useState(false)
     return (
         <>
-            <div className={`bg-[#2b3643] sticky top-0  w-full h-12 z-10 flex lg:justify-end justify-between items-center text-white px-6`}>
+            <div className={`bg-[#2b3643] sticky top-0  w-full p-3 z-10 flex lg:justify-end justify-between items-center text-white px-6`}>
                 <div className={`lg:hidden  block bg-white px-2 `}>
-                    <img src={logo} alt="TexLang" className='h-12' />
+                    <img src={logo} alt="TexLang" className='h-12 no-print' />
                 </div>
                 <div className='flex items-center gap-2'>
-                    <div onClick={() => setMenuOpen(true)} className='flex items-center font-sans gap-1.5 cursor-pointer hover:bg-[#67707975] px-2.5 h-full'>
-                        {user?.name}
+                    <div onClick={() => setMenuOpen(true)} className='flex items-center font-sans gap-1.5 cursor-pointer hover:bg-[#67707975] px-2.5 h-full no-print'>
+                        <span className='no-print'>{user?.name}</span>
                         <BsChevronDown />
                         <ProfileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
                     </div>

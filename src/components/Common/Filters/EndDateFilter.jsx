@@ -1,5 +1,4 @@
 // DateFilter.js
-import React from 'react';
 
 const EndDateFilter = ({ column }) => {
     const { filterValue, setFilter } = column

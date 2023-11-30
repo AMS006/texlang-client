@@ -35,7 +35,14 @@ const UserAlertModal = ({ open, setOpen, user }) => {
   return (
     <>
       {open && <div>
-        <div className='fixed  top-0 bottom-0 z-20 right-0 left-0 bg-slate-500 bg-opacity-40' ></div>
+        <div className='fixed  top-0 bottom-0 z-20 right-0 left-0 bg-slate-500 bg-opacity-40'
+          role="button"
+          onClick={() => setOpen(false)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              setOpen(false);
+            }
+          }} />
         <div className='fixed  right-1/2 top-1/2 z-40 translate-x-1/2 -translate-y-1/2 overflow-y-hidden md:min-w-[40%] min-w-[60%] bg-white px-4 py-4'>
           <h1 className='bg-red-500 text-whtie px-4 py-1.5 font-lg font-bold text-white text-start'>{user.status ? 'Deactivate User' : 'Activatue User'}</h1>
           <p className='px-4 py-2.5 text-start font-semibold'>{`Are you sure you want to ${user.status ? 'deactivate' : 'activate'} the user?`}</p>

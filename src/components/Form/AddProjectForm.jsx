@@ -67,7 +67,7 @@ const AddProjectForm = () => {
             setLoading(false)
             dispatch(setClearFile(true))
             dispatch(clearFiles())
-            reset()
+            reset();
         } catch (error) {
             const message = error.response.data.message || 'Unable to Add Project'
             setLoading(false)

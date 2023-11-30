@@ -1,5 +1,3 @@
-// DateFilter.js
-import React from 'react';
 
 const StartDateFilter = ({ column }) => {
     const { flterValue, setFilter } = column

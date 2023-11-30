@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { deleteObject, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 
 import { app } from '../../firebase';
-import { clearFiles, removeFile, setFilesData } from '../../redux/reducers/file';
+import { clearFiles, removeFile, setClearFile, setFilesData } from '../../redux/reducers/file';
 import { calculateDuration, generateFileData } from '../../helper';
 
 const UploadFiles = () => {
@@ -163,7 +163,7 @@ const UploadFiles = () => {
             setCurrentFileIndex(currentFileIndex - 1)
         }
         if (uploadedFiles[file.name]) {
-            const filePath = uploadedFilesData.filter((f) => f.name === file.name)[0].filePath
+            const filePath = uploadedFilesData.filter((f) => f.name === file.name)[0].sourceFilePath
             handleDeleteFile(filePath)
             const updatedFiles = files.filter((f) => f.name !== file.name);
             const updatedUploadedFiles = { ...uploadedFiles };
@@ -227,7 +227,7 @@ const UploadFiles = () => {
             setCurrentFileIndex(0)
             setUploadedFilesData([])
             currFileIndexRef.current = 0
-
+            dispatch(setClearFile(false))
         }
     }, [clearFile, dispatch])
 

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Layout from '../layout'
 import AddProjectForm from '../components/Form/AddProjectForm'
 

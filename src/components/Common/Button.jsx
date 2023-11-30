@@ -1,4 +1,3 @@
-import React from 'react'
 import ButtonLoader from '../Loader/Button'
 
 const Button = ({ text, loading, onClick, className, type = 'button', disabled }) => {

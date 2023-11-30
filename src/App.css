@@ -1,12 +1,20 @@
-html,body,#root,main{
+html,body,#root{
   height:100%;
-  width:100%;
-  background-color: #f8fafc;
-}
-#root{
   display: flex;
   flex-direction: column;
+  overflow: auto;
 }
+main{
+  flex:1;
+}
+footer{
+  margin-top: auto;
+}
+body{
+  background-color: #f8fafc;
+}
+
+
 .slide-pane__content{
   padding: 12px 10px !important;
   padding-top: 56px !important;
@@ -57,5 +65,23 @@ a.active,a.active:hover{
     display: flex !important;
   }
 }
+
+@media print {
+  .no-print {
+    display: none;
+  }
+}
+
+@page {
+  size: auto; /* Let the browser determine the page size */
+  margin-top: 1em; /* Set margins as needed */
+  counter-increment: none; /* Disable page numbering */
+}
+
+/* Hide URL at the bottom */
+@page :first {
+  margin-bottom: 0; /* Set the margin-bottom to 0 on the first page */
+}
+
 
 

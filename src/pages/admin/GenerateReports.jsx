@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import Layout from '../../layout'
 import { getCompanyProjects } from '../../redux/actions/admin/project'
 import { useDispatch } from 'react-redux'

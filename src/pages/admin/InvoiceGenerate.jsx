@@ -107,11 +107,19 @@ const InvoiceGenerate = () => {
           <h3 className='font-semibold'>Tax Details</h3>
           <TaxDetailTable />
         </div>
-        <div className='flex flex-col text-sm'>
-          <h3 className='font-semibold'>Declaration</h3>
-          <p>We declare that this invoice show actual price of the goods described and that all particulars are true and correct</p>
-          <h4 className='font-semibold uppercase'>for megdap innovation labs private limited</h4>
+        <div className='flex justify-between'>
+          <div className='flex flex-col text-sm'>
+            <h3 className='font-semibold'>Declaration</h3>
+            <p>We declare that this invoice show actual price of the goods described and that all particulars are true and correct</p>
+            <h4 className='font-semibold uppercase'>for megdap innovation labs private limited</h4>
+          </div>
+          <div className='flex justify-end items-end'>
+            <h3 className='font-semibold'>Authorized Signatory</h3>
+          </div>
         </div>
+      </div>
+      <div className='flex items-end mt-2.5'>
+        <button onClick={() => window.print()} className='bg-blue-500 text-white px-2.5 py-1.5 hover:bg-blue-600 no-print'>Print Invoice</button>
       </div>
     </div>
   )
