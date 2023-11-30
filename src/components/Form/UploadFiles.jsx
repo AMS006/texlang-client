@@ -235,12 +235,21 @@ const UploadFiles = () => {
         dispatch(clearFiles())
     }, [dispatch])
 
+    const handleKeyDown = (event) => {
+
+        if (event.key === 'Enter') {
+            handleFileExplorer();
+        }
+    };
     return (
         <div className='flex flex-col w-full gap-2.5'>
             <div
                 onDragOver={handleDragOver}
                 onDrop={handleDrop}
                 onClick={handleFileExplorer}
+                onKeyDown={handleKeyDown}
+                role='button'
+                tabIndex={"0"}
                 className='flex  gap-2.5 flex-wrap justify-center items-center cursor-pointer overflow-y-auto h-36 w-full border p-1.5  border-dashed rounded border-blue-500'
             >
                 <input type='file' multiple name='files' id='' className='hidden' ref={fileRef} onChange={(e) => { handleFileCheck(e.target.files) }} />

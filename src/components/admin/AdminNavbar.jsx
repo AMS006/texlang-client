@@ -24,7 +24,7 @@ const AdminNavbar = () => {
             <h3 className='text-lg capitalize text-gray-300 px-2.5'>FEATRURES</h3>
             <div className='flex flex-col gap-2.5 py-2.5 '>
                 <div className='px-2'>
-                    <div className='flex items-center justify-between select-none cursor-pointer py-2.5' onClick={() => dispatch(setProjectTabOpen(!projectTabOpen))}>
+                    <div className='flex items-center justify-between select-none cursor-pointer py-2.5' role="button" onClick={() => dispatch(setProjectTabOpen(!projectTabOpen))} onKeyDown={(e) => { if (e.key === 'Enter') dispatch(setProjectTabOpen(!projectTabOpen)) }}>
                         <div className='flex items-center gap-1.5'>
                             <MdOutlineDiamond size={20} />
                             <span>Projects</span>
