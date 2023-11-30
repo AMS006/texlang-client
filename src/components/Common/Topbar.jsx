@@ -21,7 +21,7 @@ const Topbar = () => {
                     <img src={logo} alt="TexLang" className='h-12 no-print' />
                 </div>
                 <div className='flex items-center gap-2'>
-                    <div onClick={() => setMenuOpen(true)} role="button" onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setMenuOpen(true) }} className='flex items-center font-sans gap-1.5 cursor-pointer hover:bg-[#67707975] px-2.5 h-full no-print'>
+                    <div onClick={() => setMenuOpen(true)} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setMenuOpen(true) }} className='flex items-center font-sans gap-1.5 cursor-pointer hover:bg-[#67707975] px-2.5 h-full no-print'>
                         <span className='no-print'>{user?.name}</span>
                         <BsChevronDown />
                         <ProfileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />

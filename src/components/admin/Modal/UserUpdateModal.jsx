@@ -45,7 +45,6 @@ const UserUpdateModal = ({ open, setOpen, user }) => {
     <>
       {open && <div>
         <div className='fixed  top-0 bottom-0 z-20 right-0 left-0 bg-slate-500 bg-opacity-40'
-          role="button"
           onClick={() => setOpen(false)}
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
