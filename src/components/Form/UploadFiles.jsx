@@ -84,15 +84,16 @@ const UploadFiles = () => {
         const storage = getStorage(app);
         const fileName = file?.name;
         const timeStamp = Date.now();
-        const date = new Date(timeStamp)
-        const storageRef = ref(storage, `${user.companyName.split(' ').join('_')}/${user.id}/${date}/${fileName}`);
+        const date = new Date(timeStamp);
+        const filePath = `${user.companyName.split(' ').join('_')}/${user.id}/${date}/${fileName}`
+        const storageRef = ref(storage, filePath);
         const form = new FormData();
         const isRequired = file.type.startsWith('video') || file.type.startsWith('audio') || file.type.startsWith('image')
 
         if (!isRequired) {
             form.append('file', file);
             form.append('name', fileName);
-            form.append('timeStamp', timeStamp);
+            form.append('filePath', filePath);
         }
         let fileData = {}
         if (file.type.startsWith('video')) {
